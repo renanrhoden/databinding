@@ -19,12 +19,5 @@ public class MainActivity extends AppCompatActivity {
         user = new User("Test", "User");
         binding.setUser(user);
     }
-    public void hideButtton (View view) {
-        if (binding.getUser().getFirstName().isEmpty()){
-            binding.setUser(user);
-        } else {
-            binding.setUser(new User("", ""));
-        }
 
-    }
 }
