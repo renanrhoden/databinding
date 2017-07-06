@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="user" type="com.ilegra.databinding.User"/>
+        <variable name="handlers" type="com.ilegra.databinding.MyHandlers"/>
+        <import type="android.view.View" />
+    </data>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.firstName}"
+            android:visibility="@{user.visible ? View.VISIBLE : View.GONE}"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.lastName}"
+            android:visibility="@{user.visible ? View.VISIBLE : View.GONE}"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> user.visible ? user.setVisible(false) : user.setVisible(true)}"
+            android:text="Button"
+            />
+    </LinearLayout>
+</layout>
