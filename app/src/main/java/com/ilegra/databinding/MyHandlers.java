@@ -1,10 +1,17 @@
 package com.ilegra.databinding;
 
+import android.databinding.BaseObservable;
+import android.databinding.BindingAdapter;
 import android.view.View;
+import android.widget.ImageView;
 
-public class MyHandlers {
+import com.squareup.picasso.Picasso;
 
-    public void onClickFriend(View view) {
+public class MyHandlers extends BaseObservable{
+
+    public void onLoadImageClick(View view){
 
     }
+
+
 }

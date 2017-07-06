@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable name="user" type="com.ilegra.databinding.User"/>
         <variable name="handlers" type="com.ilegra.databinding.MyHandlers"/>
@@ -25,5 +26,17 @@
             android:onClick="@{() -> user.visible ? user.setVisible(false) : user.setVisible(true)}"
             android:text="Button"
             />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:imageUrl="@{user.imageUrl}" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Load Image"/>
     </LinearLayout>
 </layout>
