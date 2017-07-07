@@ -2,21 +2,30 @@ package com.ilegra.databinding;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.databinding.BindingAdapter;
-import android.databinding.ObservableField;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 public class User extends BaseObservable {
     private final String firstName;
     private final String lastName;
     private boolean visible;
-    public ObservableField<Drawable> androidImage;
     private int image = 0;
+
+    @Bindable
+    public int getPadding() {
+        return padding;
+    }
+
+    public void setPadding(int padding) {
+        this.padding = padding;
+        notifyPropertyChanged(BR.padding);
+    }
+
+    private int padding = 0;
+
+
+    public String[] getUrls() {
+        return urls;
+    }
+
     private String[] urls = {
             "http://woikr.com/wp/wp-content/uploads/2011/02/chirag_androidified.png",
             "https://www1-lw.xda-cdn.com/files/2011/02/11.jpg",
@@ -47,23 +56,14 @@ public class User extends BaseObservable {
         this.visible = visible;
         notifyPropertyChanged(BR.visible);
     }
-    @BindingAdapter("imageUrl")
-    public static void loadImage(ImageView view, String imageUrl) {
-        Picasso.with(view.getContext())
-                .load(imageUrl)
-                .into(view);
-    }
-    @BindingAdapter({"bind:font"})
-    public static void setFont(TextView textView, String fontName){
-        textView.setTypeface(Typeface.createFromAsset(textView.getContext().getAssets(), "fonts/" + fontName));
-    }
 
     public String getImageUrl() {
-        if(image < urls.length){
+        if(image < urls.length - 1){
             image++;
         } else {
             image = 0;
         }
         return urls[image];
     }
+
 }

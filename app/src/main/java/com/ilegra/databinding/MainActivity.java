@@ -1,10 +1,8 @@
 package com.ilegra.databinding;
 
-import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 
 import com.ilegra.databinding.databinding.ActivityMainBinding;
 
@@ -20,5 +18,4 @@ public class MainActivity extends AppCompatActivity {
         binding.setUser(user);
         binding.setHandlers(new MyHandlers());
     }
-
 }

@@ -6,42 +6,58 @@
         <variable name="handlers" type="com.ilegra.databinding.MyHandlers"/>
         <import type="android.view.View" />
     </data>
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.firstName}"
+            android:textSize="30sp"
+            android:visibility="@{user.visible ? View.VISIBLE : View.GONE}"
+            android:paddingStart="@{user.padding}"
+            app:font="@{`SF_Cartoonist_Hand_Bold.ttf`}"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.firstName}"
-            android:visibility="@{user.visible ? View.VISIBLE : View.GONE}"
-            app:font="@{`SF_Cartoonist_Hand_Bold.ttf`}"
-            android:textSize="30sp"/>
-        <TextView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@{user.lastName}"
-            android:visibility="@{user.visible ? View.VISIBLE : View.GONE}"/>
+            android:visibility="@{textView.visibility}"
+            app:font="@{`SF_Cartoonist_Hand_Bold.ttf`}" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{() -> user.visible ? user.setVisible(false) : user.setVisible(true)}"
-            android:text="Button"
-            />
+            android:text="@{user.visible ? `Hide` : `Show`}"
+            app:font="@{`SF_Cartoonist_Hand_Bold.ttf`}"/>
+
+        <SeekBar
+            android:id="@+id/seekBar2"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="10"
+            android:progress="3"
+            app:pad="@{user}"/>
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:imageUrl="@{user.getImageUrl}" />
+            app:imageUrl="@{user.urls[4]}"
+            android:src="@color/colorAccent"/>
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Load Image"
-            android:onClick="@{handlers::onLoadImageClick}"/>
+            android:onClick="@{(view) -> handlers.onLoadImageClick(view, imageView, user)}"/>
     </LinearLayout>
 </layout>
