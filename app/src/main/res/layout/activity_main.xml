@@ -10,10 +10,14 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView android:layout_width="wrap_content"
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{user.firstName}"
-            android:visibility="@{user.visible ? View.VISIBLE : View.GONE}"/>
+            android:visibility="@{user.visible ? View.VISIBLE : View.GONE}"
+            app:font="@{`SF_Cartoonist_Hand_Bold.ttf`}"
+            android:textSize="30sp"/>
         <TextView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{user.lastName}"
@@ -31,12 +35,13 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:imageUrl="@{user.imageUrl}" />
+            app:imageUrl="@{user.getImageUrl}" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Load Image"/>
+            android:text="Load Image"
+            android:onClick="@{handlers::onLoadImageClick}"/>
     </LinearLayout>
 </layout>
